@@ -19,10 +19,13 @@ const CartReducer = (state = initState, action) => {
                 return state;
             }
             else {
-                const tPrice = state.totalPrice * quantity;
+                const tPrice = state.totalPrice +product.price * quantity;
                 // console.log(tPrice);
+                console.log(state.totalPrice,Number.parseInt(product.price),quantity)
+
                 const tQuantities = state.totalQuantities + quantity;
                 product.quantity = quantity;
+                // console.log(tPrice)
                 return {
                     ...state,
                     products: [...state.products, product],
@@ -37,7 +40,7 @@ const CartReducer = (state = initState, action) => {
             state.products[index] = findProduct;
             return {
                 ...state,
-                totalPrice: state.totalPrice,
+                totalPrice: state.totalPrice + findProduct.price,
                 totalQuantities: state.totalQuantities + 1,
             }
 
@@ -49,7 +52,7 @@ const CartReducer = (state = initState, action) => {
                 state.products[index] = findProduct;
                 return {
                     ...state,
-                    totalPrice: state.totalPrice,
+                    totalPrice: state.totalPrice - findProduct.price,
                     totalQuantities: state.totalQuantities - 1,
                 }
             }
@@ -64,7 +67,6 @@ const CartReducer = (state = initState, action) => {
                 totalPrice:state.totalPrice * findProduct.quantity,
                 totalQuantities:state.totalQuantities - findProduct.quantity,
             }   
-    
         default:
             return state
     }

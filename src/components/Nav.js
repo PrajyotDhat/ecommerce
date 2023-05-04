@@ -4,9 +4,9 @@ import { RiShoppingCartFill } from "react-icons/ri";
 import { useSelector } from 'react-redux';
 
 const Nav = () => {
-  // const { totalQuantities } = useSelector(state => state.CartReducer)
+  const { totalQuantities } = useSelector(state => state.CartReducer)
   // console.log(totalQuantities);
-  const {product} = useSelector(state =>state.CartReducer)
+  // const {product} = useSelector(state =>state.CartReducer)
   return (
     <div className='nav'>
       <div className="container">
@@ -19,7 +19,7 @@ const Nav = () => {
             <Link to="/cart">
               <div className="basket">
                 <RiShoppingCartFill size={30} />
-                <span>{product}</span>
+                <span>{totalQuantities}</span>
               </div>
             </Link>
           </div>

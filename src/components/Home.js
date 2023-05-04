@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
+import Rating from './Rating';
 
 const Home = () => {
 
@@ -18,7 +19,7 @@ const Home = () => {
                             <div className="card">
                                 <div className="product-image">
                                 <Link to={`/details/${product.id}`}>
-                                    <img src={`${product.image}`} alt="image name" />
+                                    <img src={`${product.image}`} alt='' />
                                 </Link>
                                 </div>
                                 <div className="product-name">
@@ -26,6 +27,9 @@ const Home = () => {
                                 </div>
                                  <div className="product-price">
                                     {product.price}
+                                </div>
+                                <div className="product-star">
+                                    <Rating value={product.rating}/>
                                 </div>
                                     </div>
                                 </div>
@@ -37,6 +41,7 @@ const Home = () => {
             </div>
         </div>
     )
+    
 }
 
 export default Home

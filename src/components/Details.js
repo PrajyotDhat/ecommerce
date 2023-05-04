@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+import Rating from './Rating';
 
 const Details = () => {
     const [quantity, setQuantity] = useState(1);
@@ -19,10 +20,11 @@ const Details = () => {
     }
     return (
         <div className='container mt-1'>
+           <h1>Product Details</h1>
             <div className="row">
                 <div className="col-6">
                     <div className="details-image">
-                        <img src={`${product.image}`} alt="image" />
+                        <img src={`${product.image}`} alt='' />
                     </div>
                 </div>
                 <div className="col-6">
@@ -44,9 +46,13 @@ const Details = () => {
                         <h4>Details</h4>
                         {product.desc}
                     </div>
+                    <div className="product-star">
+                    <h4>Rating:</h4>
+                        <Rating value={product.rating}/>
+                    </div>
                 </div>
             </div>
-            <h1>Details</h1>
+            
         </div>
     )
 }

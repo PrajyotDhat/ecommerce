@@ -6,12 +6,10 @@ import { RiDeleteBin5Line } from 'react-icons/ri'
 const Cart = () => {
   const { products,totalPrice,totalQuantities } = useSelector(state => state.CartReducer);
   // console.log(products);
+  // console.log(totalPrice);
   const dispatch = useDispatch();
-  const symbol = '₹'
-  function getNum(price) {
-    let finalPrice = Number(price.replace(/[^\w\s]/g, ''))
-    return `${finalPrice}`;
-  }
+  // const symbol = '₹'
+  
   return (
     <div className='cart'>
       <div className="container">
@@ -57,7 +55,8 @@ const Cart = () => {
                   </div>
                   <div className="col-2">
                     <div className="cart-total ">
-                      {symbol.concat(getNum(product.price) * product.quantity)}
+                      {/* {symbol.concat(getNum(product.price) * product.quantity)} */}
+                      { product.price*product.quantity}
                     </div>
                   </div>
                   <div className="col-2">
@@ -87,7 +86,7 @@ const Cart = () => {
                     Total Price:
                   </div>
                   <div className="col-6">
-                    {totalPrice}
+                  {totalPrice}
                   </div>
                 </div>
               </div>
